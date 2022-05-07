@@ -9,6 +9,13 @@ require:
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - config/*
+
+Style/Documentation:
+  Enabled: false
+
 # Variables starting with `_` is an old convention for TB concepts
 Lint/UnderscorePrefixedVariableName:
   Exclude:

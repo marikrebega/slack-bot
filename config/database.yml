@@ -17,9 +17,9 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: <%= ENV['SLACK_BOT_DB_HOST'] %>
-  username: <%= ENV['SLACK_BOT_DB_USERNAME'] %>
-  password: <%= ENV['SLACK_BOT_DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -86,4 +86,4 @@ production:
   <<: *default
   database: slack_bot_production
   username: slack_bot
-  password: <%= ENV["SLACK_BOT_DB_PASSWORD"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
