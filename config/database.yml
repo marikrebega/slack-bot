@@ -17,7 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: localhost
+  host: <%= ENV['SLACK_BOT_DB_HOST'] %>
   username: <%= ENV['SLACK_BOT_DB_USERNAME'] %>
   password: <%= ENV['SLACK_BOT_DB_PASSWORD'] %>
   # For details on connection pooling, see Rails configuration guide
