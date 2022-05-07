@@ -5,20 +5,28 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.2"
 
-gem "rails", "~> 7.0.2", ">= 7.0.2.4"
-gem "sprockets-rails"
+gem "bootsnap", require: false
+gem "importmap-rails"
+gem "jbuilder"
 gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
-gem "importmap-rails"
-gem "turbo-rails"
+gem "rails", "~> 7.0.2", ">= 7.0.2.4"
+gem "sprockets-rails"
 gem "stimulus-rails"
-gem "jbuilder"
+gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
-gem "bootsnap", require: false
 
 group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "dotenv-rails", require: "dotenv/rails-now"
+end
+
+group :development do
+  gem "web-console"
+end
+
+group :test do
+  gem "rspec-rails", "~> 6.0.0.rc1"
   gem "rubocop"
   gem "rubocop-faker", require: false
   gem "rubocop-performance", require: false
@@ -26,9 +34,5 @@ group :development, :test do
   gem "rubocop-rake", require: false
   gem "rubocop-rspec", require: false
   gem "rubocop-thread_safety", require: false
-  gem 'rspec-rails', '~> 6.0.0.rc1'
-end
-
-group :development do
-  gem "web-console"
+  gem "test-prof", "~> 1.0"
 end

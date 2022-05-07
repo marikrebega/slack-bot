@@ -6,6 +6,9 @@ require:
   - rubocop-thread_safety
   - test_prof/rubocop
 
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
 # Variables starting with `_` is an old convention for TB concepts
 Lint/UnderscorePrefixedVariableName:
   Exclude:
