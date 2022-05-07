@@ -26,6 +26,7 @@ group :development, :test do
   gem "rubocop-rake", require: false
   gem "rubocop-rspec", require: false
   gem "rubocop-thread_safety", require: false
+  gem 'rspec-rails', '~> 6.0.0.rc1'
 end
 
 group :development do
