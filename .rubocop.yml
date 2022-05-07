@@ -1,0 +1,72 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rake
+  - rubocop-rspec
+  - rubocop-thread_safety
+  - test_prof/rubocop
+
+# Variables starting with `_` is an old convention for TB concepts
+Lint/UnderscorePrefixedVariableName:
+  Exclude:
+    - app/concepts/**/*
+
+# Because of TB's custom `#fail`, rubocop makes false-positives on this cop
+Lint/UnreachableCode:
+  Exclude:
+    - app/concepts/**/operation/*
+
+# Fixtures
+Metrics/ModuleLength:
+  Enabled: true
+  Exclude:
+    - lib/fixtures/*
+
+Naming/VariableNumber:
+  AllowedIdentifiers:
+    - iso8601
+    - iso2
+  Exclude:
+    - config/routes/* # Routes have v2, v3 namespaces
+
+# test_prof cop
+RSpec/AggregateExamples:
+  Enabled: true
+  Include:
+    - spec/**/*.rb
+
+# Routes
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - config/routes/*
+    - app/chewy/autocomplete/*
+
+Lint/EmptyBlock:
+  Enabled: true
+  Exclude:
+    - config/routes/*
+
+# We use `instance_exec` frequently and it can be confusing without the `self`
+Style/RedundantSelf:
+  Exclude:
+    - app/concepts/**/populators/*
+
+# Trailblazer defines `#fail` on a custom DSL
+Style/SignalException:
+  Exclude:
+    - app/concepts/**/operation/*
+
+# Temporarily disable until offenses are fixed
+Style/ClassAndModuleChildren:
+  Enabled: true
+  Exclude:
+    - app/concepts/**/*
+    - app/controllers/**/*
+    - app/searches/**/*
+
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - prod
+    - test
